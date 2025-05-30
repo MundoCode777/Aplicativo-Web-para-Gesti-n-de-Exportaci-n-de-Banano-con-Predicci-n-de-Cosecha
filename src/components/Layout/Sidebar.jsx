@@ -1,46 +1,36 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import {
-  Dashboard as DashboardIcon,
-  Map as MapIcon,
-  Assessment as ChartIcon,
-  LocalShipping as ExportIcon,
-  Settings as SettingsIcon
-} from '@mui/icons-material';
+  FaTachometerAlt,
+  FaMap,
+  FaChartBar,
+  FaTruck,
+  FaCog
+} from 'react-icons/fa';
 
 const Sidebar = () => {
   const menuItems = [
-    { text: 'Dashboard', icon: <DashboardIcon /> },
-    { text: 'Mapa', icon: <MapIcon /> },
-    { text: 'Reportes', icon: <ChartIcon /> },
-    { text: 'Exportaciones', icon: <ExportIcon /> },
-    { text: 'Configuración', icon: <SettingsIcon /> }
+    { text: 'Dashboard', icon: <FaTachometerAlt /> },
+    { text: 'Mapa', icon: <FaMap /> },
+    { text: 'Reportes', icon: <FaChartBar /> },
+    { text: 'Exportaciones', icon: <FaTruck /> },
+    { text: 'Configuración', icon: <FaCog /> }
   ];
 
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: 240,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
-          width: 240,
-          boxSizing: 'border-box',
-        },
-      }}
-    >
-      <Toolbar /> {/* Espacio para la navbar */}
-      <List>
-        {menuItems.map((item, index) => (
-          <ListItem button key={item.text}>
-            <ListItemIcon>
-              {item.icon}
-            </ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+    <aside className="fixed top-0 left-0 h-full w-64 bg-white shadow-md z-10 mt-16">
+      <nav className="mt-6">
+        <ul>
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <a href="#" className="flex items-center px-6 py-3 text-gray-600 hover:bg-banano-primary hover:text-white transition-colors">
+                <span className="mr-3">{item.icon}</span>
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
   );
 };
 
