@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import {
   Dashboard as DashboardIcon,
   Map as MapIcon,
@@ -9,6 +9,14 @@ import {
 } from '@mui/icons-material';
 
 const Sidebar = () => {
+  const menuItems = [
+    { text: 'Dashboard', icon: <DashboardIcon /> },
+    { text: 'Mapa', icon: <MapIcon /> },
+    { text: 'Reportes', icon: <ChartIcon /> },
+    { text: 'Exportaciones', icon: <ExportIcon /> },
+    { text: 'Configuración', icon: <SettingsIcon /> }
+  ];
+
   return (
     <Drawer
       variant="permanent"
@@ -23,16 +31,12 @@ const Sidebar = () => {
     >
       <Toolbar /> {/* Espacio para la navbar */}
       <List>
-        {['Dashboard', 'Mapa', 'Reportes', 'Exportaciones', 'Configuración'].map((text, index) => (
-          <ListItem button key={text}>
+        {menuItems.map((item, index) => (
+          <ListItem button key={item.text}>
             <ListItemIcon>
-              {index === 0 && <DashboardIcon />}
-              {index === 1 && <MapIcon />}
-              {index === 2 && <ChartIcon />}
-              {index === 3 && <ExportIcon />}
-              {index === 4 && <SettingsIcon />}
+              {item.icon}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={item.text} />
           </ListItem>
         ))}
       </List>
